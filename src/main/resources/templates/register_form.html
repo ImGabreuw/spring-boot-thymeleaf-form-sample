@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <link th:href="@{css/register_form.css}" rel="stylesheet" />
+
+    <title>Form</title>
+</head>
+<body>
+<div align="center">
+    <h1>User Registration</h1>
+
+    <form action="#" th:action="@{/register}" method="post" th:object="${user}">
+        <label>Full name:</label>
+        <input type="text" th:field="*{name}" />
+        <br/>
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" />
+        <br/>
+        <label>Password:</label>
+        <input type="password" th:field="*{password}" />
+        <br/>
+        <label>Birthdate:</label>
+        <input type="date" th:field="*{birthDate}" />
+        <br/>
+        <label>Gender:</label>
+        <input type="radio" th:field="*{gender}" value="Male" />Male
+        <input type="radio" th:field="*{gender}" value="Female" />Female
+        <br/>
+        <label>Profession:</label>
+        <select th:field="*{profession}">
+            <option th:each="p : ${professionList}" th:value="${p}" th:text="${p}"></option>
+        </select>
+        <br/>
+        <label>Married?</label>
+        <input type="checkbox" th:field="*{married}" />
+        <br/>
+        <label>Note:</label>
+        <textarea rows="5" cols="25" th:field="*{note}"></textarea>
+
+        <br/>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+</body>
+</html>
